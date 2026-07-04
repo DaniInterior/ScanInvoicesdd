@@ -37,5 +37,9 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
+    },
+    "suggest": {
+        "imagick": "For better image cropping support in Tesseract OCR adapter. Install via: apt-get install php-imagick",
+        "tesseract-ocr": "Free and open-source OCR engine. Install via: apt-get install tesseract-ocr (or apt-get install tesseract-ocr-spa for Spanish language support)"
     }
 }
