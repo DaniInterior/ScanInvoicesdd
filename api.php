@@ -23,6 +23,7 @@ define('NOTOKENRENEWAL', 1);
 require_once __DIR__ . '/functions.php';
 dol_include_once('/scaninvoices/middlewares.php');
 dol_include_once('/scaninvoices/class/filestoimport.class.php');
+dol_include_once('/scaninvoices/lib/ocr.lib.php');
 $output = "";
 $baseVerb = getenv('BASE_VERB');
 
@@ -83,7 +84,6 @@ router('GET', 'jpgfile/(?<filename>(.*))&token=.*$', function ($params) {
 // get data on rect position
 router('POST', 'rect', function ($params) {
 	global $conf, $mesg, $langs, $db;
-	$scaninvoices_endpoint = getDolGlobalString('SCANINVOICES_URI');
 	$ratio = GETPOST('ratio', 'alpha');
 	if (!is_numeric($ratio) && !($ratio > 0)) {
 		$ratio = 1;
@@ -91,23 +91,25 @@ router('POST', 'rect', function ($params) {
 	dol_syslog('ScanInvoices internal API::RECT On a un appel avec ' . json_encode($_POST));
 	$output = [];
 
-	$url = $scaninvoices_endpoint . '/api/ocrcuts';
-	dol_syslog('ScanInvoices internal API::RECT Try to get ocr data from rect with ' . $url . ' ...');
+	dol_syslog('ScanInvoices internal API::RECT Try to get ocr data from rect using configured adapter...');
 	$rectIn = GETPOST('rect', 'array');
 	$param = [
-		'json' => [
-			'ocrID' => GETPOST('ocrID', 'alphanohtml'),
-			'rect'  => implode(":", is_array($rectIn) ? $rectIn : []),
-			'ratio' => $ratio,
-			'action' => 'rect',
-		]
+		'ocrID' => GETPOST('ocrID', 'alphanohtml'),
+		'rect'  => implode(":", is_array($rectIn) ? $rectIn : []),
+		'ratio' => $ratio,
+		'action' => 'rect',
 	];
-	$result = getURLContent($url, 'POST', json_encode($param), 1, scanInvoicesApiCommonHeader(), ['http','https'], 2);
-	scaninvoiceshandleTimeoutCheckBlacklist($result);
+	
+	// Use new configurable OCR system
+	$result = scaninvoicesProcessOcrCuts($param);
 
 	if (is_array($result) && $result['http_code'] == 200 && isset($result['content'])) {
 		$json = json_decode($result['content']);
-		$output['texte'] = trim($json->result->texte);
+		if (isset($json->result->texte)) {
+			$output['texte'] = trim($json->result->texte);
+		} else {
+			$output['texte'] = '';
+		}
 
 		$ratio = 1;
 		$rect = is_array($rectIn) ? $rectIn : [];
@@ -121,6 +123,9 @@ router('POST', 'rect', function ($params) {
 		$output['h'] = $hauteur;
 	} else {
 		$output['ERRcode'] = "1121558a";
+		if (isset($result['error'])) {
+			dol_syslog("ScanInvoices::rect error: " . $result['error'], LOG_ERR);
+		}
 	}
 	json([$output]);
 });
@@ -168,7 +173,6 @@ router('POST', 'importAuto', function ($params) {
 //Start OCR stuff
 router('POST', 'runocr', function ($params) {
 	global $conf, $mesg, $langs, $db;
-	$scaninvoices_endpoint = getDolGlobalString('SCANINVOICES_URI');
 	$ratio = GETPOST('ratio', 'alpha');
 	if (!is_numeric($ratio) && !($ratio > 0)) {
 		$ratio = 1;
@@ -199,9 +203,8 @@ router('POST', 'runocr', function ($params) {
 		return;
 	}
 
-	$url = $scaninvoices_endpoint . '/api/ocrcuts';
 	$lang = GETPOST('lang', 'aZ09');
-	dol_syslog('ScanInvoices internal API::RECT Try to get ocr data from rect with ' . $url . ' ... and lang=' . $lang);
+	dol_syslog('ScanInvoices internal API::RECT Try to get ocr data from rect using configured adapter... and lang=' . $lang);
 	$param = [
 		'ocrID' => GETPOST('ocrID', 'alphanohtml'),
 		'filename' => GETPOST('filenamePDF', 'alphanohtml'),
@@ -210,8 +213,9 @@ router('POST', 'runocr', function ($params) {
 		'action' => 'multicut',
 		'lang' => $lang,
 	];
-	$result = getURLContent($url, 'POST', json_encode($param), 1, scanInvoicesApiCommonHeader(), ['http','https'], 2);
-	scaninvoiceshandleTimeoutCheckBlacklist($result);
+	
+	// Use new configurable OCR system
+	$result = scaninvoicesProcessOcrCuts($param);
 
 	if (is_array($result) && $result['http_code'] == 200 && isset($result['content'])) {
 		$json = json_decode($result['content']);
@@ -224,13 +228,14 @@ router('POST', 'runocr', function ($params) {
 				$output[$key] = $val;
 			}
 		}
-	}
-	if (isset($result['curl_error_msg']) && $result['curl_error_msg'] != "") {
-		dol_syslog("ScanInvoices:runocr error Curl details " . $result['curl_error_msg']);
-		$mesg = '<div class="error">'.$langs->trans('runocrError');
-		$mesg .= '<br />'.$result['curl_error_msg'];
-		$mesg .= '</div>';
-		$output['error'] = $mesg;
+	} else {
+		if (isset($result['error'])) {
+			dol_syslog("ScanInvoices:runocr error: " . $result['error']);
+			$mesg = '<div class="error">'.$langs->trans('runocrError');
+			$mesg .= '<br />'.$result['error'];
+			$mesg .= '</div>';
+			$output['error'] = $mesg;
+		}
 	}
 
 	json([$output]);
@@ -260,8 +265,6 @@ router('POST', 'runocr', function ($params) {
 router('POST', 'importInvoice', function ($params) {
 	global $db, $langs, $conf, $user;
 	dol_syslog("scaninvoicesApi::importInvoice start");
-
-	$scaninvoices_endpoint = getDolGlobalString('SCANINVOICES_URI');
 
 	$data = new stdClass();
 	$data->fournisseurID = GETPOST('fournID', 'int') ? GETPOST('fournID', 'int') : null;
@@ -301,8 +304,6 @@ router('POST', 'importInvoice', function ($params) {
 	}
 
 	//Confirm/Correct OCR server of "good" values
-	$url = $scaninvoices_endpoint . '/api/ocrcuts';
-	// dol_syslog('ScanInvoices internal API::RECT Try to get ocr data from rect with ' . $url . ' ...');
 	// Zones are sent by the frontend as "x:y:w:h" strings, not arrays.
 	$jsonRect = [
 		'fournisseurRect' => GETPOST('fournisseurRect', 'alphanohtml'),
@@ -329,13 +330,13 @@ router('POST', 'importInvoice', function ($params) {
 		'action' => 'confirmvalues',
 	];
 
-	$result = getURLContent($url, 'POST', json_encode($param), 1, scanInvoicesApiCommonHeader(), ['http','https'], 2);
-	scaninvoiceshandleTimeoutCheckBlacklist($result);
-
+	// Use new configurable OCR system
+	$result = scaninvoicesProcessOcrCuts($param);
+	
 	if (is_array($result) && $result['http_code'] == 200 && isset($result['content'])) {
 		//nothing to do, confirm is ok
 	} else {
-		dol_syslog("scaninvoicesApi::importInvoice Bad news, can't confirm to ocr server good values but that's not a fatal error");
+		dol_syslog("scaninvoicesApi::importInvoice Bad news, can't confirm to ocr system good values but that's not a fatal error");
 	}
 
 	if (is_numeric($data->fournisseurID) && $data->fournisseurID > 0) {
@@ -362,7 +363,7 @@ router('POST', 'importInvoice', function ($params) {
 
 	if (is_null($data->fournisseurID)) {
 		dol_syslog("scaninvoicesApi::importInvoice Fournisseur introuvable et création automatique impossible");
-		$data->message = html_entity_decode($langs->trans('MANUAL_IMPORT_ERROR_SUPPLIER', "<a href='" . DOL_URL_ROOT . "/societe/card.php?action=create&leftmenu=&name=" . urlencode($data->fournisseur) . "&type=f' target='_blank'>", "</a>", "<b>".$data->fournisseur."</b>"));
+		$data->message = html_entity_decode($langs->trans('MANUAL_IMPORT_ERROR_SUPPLIER', "<a href='" . DOL_URL_ROOT . "/societe/card.php?action=create&leftmenu=&name=" . urlencode($data->fournisseur) . "'>" . $data->fournisseur . "</a>"));
 		$data->error = 12;
 	} else {
 		dol_syslog("Création d'une facture fournisseur (A)"); //for full debug . json_encode($data));
