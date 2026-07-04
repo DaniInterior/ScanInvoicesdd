@@ -1,0 +1,150 @@
+# Copyright (C) 2021 Éric Seigne <eric.seigne@cap-rel.fr>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Générique
+#
+
+# Module label 'ModuleScanInvoicesName'
+ModuleScanInvoicesName=ScanInvoice
+# Module description 'ModuleScanInvoicesDesc'
+ModuleScanInvoicesDesc=Puoi caricare documenti PDF come fatture fornitore e creare automaticamente la fattura e/o fornitore senza dover inserire alcun dato. Il modulo utilizza sia le informazioni FactorX (se disponibili) che l&#39;OCR per analizzare il PDF caricato.
+ScanInvoicesArea=Area di importazione automatica delle fatture (modulo ScanInvoices)
+
+#
+# Page d'administration
+#
+ScanInvoicesSetup=Configurazione del modulo ScanInvoices
+Settings=Impostazioni
+ScanInvoicesSetupPage="Pagina di configurazione del modulo ScanInvoices"
+SCANINVOICES_URI=Indirizzo del tuo server ocr (https://ocr.cap-rel.fr)
+SCANINVOICES_URITooltip=Inserisci qui l&#39;indirizzo del tuo server OCR. Nota: il server ocr.cap-rel.fr ti offre l'analisi di 5 documenti ogni mese.
+SCANINVOICES_EMAIL=Indirizzo di posta
+SCANINVOICES_EMAILTooltip=Indirizzo email del tuo account sul server ocr
+SCANINVOICES_PASS_API=Password del servizio Web (minimo 6 caratteri)
+SCANINVOICES_PASS_APITooltip=Se hai già un account, inserisci la password corrispondente al tuo indirizzo email sopra. Se non possiedi un account, questo verrà creato e gli verrà assegnata questa password.
+SCANINVOICES_PASS_APITooltipResetPass=Clicca qui per reimpostare la password
+SCANINVOICES_KEY_API=Chiave API (automatica, lascia vuota all&#39;inizio)
+SCANINVOICES_KEY_APITooltip="Verrà completato automaticamente quando si fa clic sul pulsante "_QQ_"Genera chiave"_QQ_""
+CheckConnectToScanInvoicesMakeAPIKey=Genera chiave API
+CheckConnectToScanInvoices=Verifica connessione
+SCANINVOICES_DEFAULT_PRODUCT=Prodotto utilizzato per impostazione predefinita per la creazione della fattura
+SCANINVOICES_DEFAULT_PRODUCTTooltip=Usato se nessun prodotto è definito nel file del fornitore (scheda Scaninvoices del file di terze parti)
+CheckConnectError=Errore di controllo della connessione
+CheckConnectOK=Connessione con il server stabilita
+dol_object_ref=Riferimento all'oggetto Dolibarr
+supplier_invoice_ref=Riferimento fattura fornitore
+SCANINVOICES_FILE_NAME=Riferimento da utilizzare come nome allegato
+SCANINVOICES_FILE_NAMETooltip=Se null, verrà utilizzato il nome del file PDF originale
+SCANINVOICES_FILE_NAME_PRE=Prefisso da aggiungere al nome del file
+SCANINVOICES_FILE_NAME_PRETooltip=Il prefisso verrà aggiunto all'inizio del nome file allegato alla fattura fornitore.
+SCANINVOICES_EMAIL_USED_RESETPASS=Un account utente con questo indirizzo email (%s) esiste già sul server %s ma con una password diversa! Fare clic sul pulsante in basso per avviare la procedura di reimpostazione della password.
+
+#
+# Page À propos 
+#
+About=Riguardo a
+ScanInvoicesAbout=Informazioni su ScanInvoices
+ScanInvoicesAboutPage=Pagina su ScanInvoices
+
+#
+# Box d'exemple
+#
+MyWidget=Widget lun
+MyWidgetDescription=Descrizione del mio widget
+ScanInvoicesFromSupplierOrder=Importa automaticamente la fattura fornitore con ScanInvoice e collegala a questo ordine
+ModuleScanInvoicesNameManual=Importazione manuale
+ModuleScanInvoicesImportAuto=Importazione automatica
+LineLabelForNewInvoicesIfNotdefine=Guarda il dettaglio negli allegati
+ERROR_MESSAGE_ANALYSE1=Errore durante l&#39;analisi del documento (codice #%s)
+ERROR_MESSAGE_ANALYSE2="Passa a %sl&#39;importazione guidata semimanuale%s e reimporta il tuo documento…"
+ERROR_MESSAGE_CREATE_INVOICE=Errore durante la creazione di %s di %s, codice di errore: %s
+SUCCESS_MESSAGE_CREATE_INVOICE=Fattura %s da %s importata: %s
+ERROR_MESSAGE_INVOICE_DUPLICATE=Errore (%s di %s), questa fattura sembra essere già stata importata. Codice di errore: %s
+
+# 
+# message par defaut pour la connexion au serveur
+#
+DEFAULT_OCR_WEBSERVICE_MSG1=Il server non è accessibile o non hai ancora un account per accedere ai servizi di analisi ed estrazione dati!
+DEFAULT_OCR_WEBSERVICE_MSG2=Clicca su questo link per verificare la connessione o per ordinare il tuo abbonamento
+
+#
+# manual import Step1
+#
+MANUAL_IMPORT_STEP1=Importazione manuale - Procedura guidata di passaggio 1
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER=Scegli il fornitore
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT1=Se il fornitore di questa fattura esiste già nel tuo dolibarr, selezionalo dall&#39;elenco sottostante.
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2=Se non esiste, hai due opzioni:
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2a=O lo crei manualmente facendo clic sul pulsante &quot;+&quot; a destra dell&#39;elenco
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2b=O non scegli nulla nel menu a tendina e se il suo numero di partita IVA è presente sulla fattura, lasci che il pilota automatico faccia il lavoro per te (funziona davvero bene solo per le partite IVA francesi)
+MANUAL_IMPORT_STEP1_LEGEND="Nota: La creazione automatica dei fornitori funziona solo se la partita IVA indicata in fattura è un numero francese…"
+Next=seguente
+
+#
+# manual import Step2
+#
+MANUAL_IMPORT_STEP2_OPEN_FILE="Apri il file…"
+MANUAL_IMPORT_STEP2_SUPPLIER=Fornitore:
+MANUAL_IMPORT_STEP2_VAT_NUMBER=Partita IVA:
+MANUAL_IMPORT_STEP2_DATE=Data:
+MANUAL_IMPORT_STEP2_INVOICE_NUMBER=Fattura:
+MANUAL_IMPORT_STEP2_AMOUNT_UNTAXED=HT totale:
+MANUAL_IMPORT_STEP2_AMOUNT=Prezzo totale:
+MANUAL_IMPORT_STEP2_START_OCR=Avvia l&#39;OCR
+MANUAL_IMPORT_STEP2_START_IMPORT_INTO_DOLIBARR=Importa in dolibarr
+MANUAL_IMPORT_STEP2_HELP=Aiuto
+
+#
+# manual import Step2 - Help assistant
+#
+MANUAL_IMPORT_STEP2_HELP_DONE=Conclusa
+MANUAL_IMPORT_STEP2_HELP_CLOSE=Chiudere
+MANUAL_IMPORT_STEP2_HELP_NEXT=seguente
+MANUAL_IMPORT_STEP2_HELP_PREV=Precedente
+MANUAL_IMPORT_STEP2_HELP_1_TITLE=1. Scelta del fascicolo
+MANUAL_IMPORT_STEP2_HELP_1_TXT="Inizia importando il file della fattura in formato PDF…<br /> Dai, clicca sul pulsante e scegli il tuo file PDF :-)"
+MANUAL_IMPORT_STEP2_HELP_2_TITLE=2. Identificare le aree da analizzare
+MANUAL_IMPORT_STEP2_HELP_2_TXT="Sposta le aree sull&#39;immagine della fattura per indicare quali aree scansionare.<br /> <small>Se mai avevi già definito delle zone per questo fornitore su una fattura precedente, il sistema le avrà preposizionate, dovrai verificare che siano ben posizionate...</small>"
+MANUAL_IMPORT_STEP2_HELP_3_TITLE=3. Eseguire l&#39;OCR
+MANUAL_IMPORT_STEP2_HELP_3_TXT=Fare clic su questo pulsante per avviare l&#39;analisi dell&#39;immagine e l&#39;estrazione dei dati<br /> <small>fare attenzione ad aver caricato PRIMA un pdf e ad aver posizionato le aree di analisi</small>
+MANUAL_IMPORT_STEP2_HELP_4_TITLE=4. Controlla il risultato
+MANUAL_IMPORT_STEP2_HELP_4_TXT=Controllare i dati importati e regolare le aree di analisi se necessario, quindi fare nuovamente clic sul pulsante &#39;OCR&#39; della scheda precedente se necessario
+MANUAL_IMPORT_STEP2_HELP_5_TITLE=5. Importa la fattura
+MANUAL_IMPORT_STEP2_HELP_5_TXT=Dopo aver convalidato i diversi valori, fare clic su questo pulsante per importare la fattura fornitore in dolibarr
+MANUAL_IMPORT_STEP2_DOCUMENT_LANG="Lingua del documento:"
+
+#
+# Automatic import
+#
+AUTOMATIC_IMPORT_DRAG_FILE_HERE=Trascina e rilascia l&#39;elenco dei file da importare qui<br /> <small>(o clicca per scegliere un file)</small>
+AUTOMATIC_IMPORT_TABLE_HEADER_NUMBER=Nessuno.
+AUTOMATIC_IMPORT_TABLE_HEADER_FILE=File
+AUTOMATIC_IMPORT_TABLE_HEADER_SUPPLIER=Fornitore
+AUTOMATIC_IMPORT_TABLE_HEADER_INVOICE=Fattura
+AUTOMATIC_IMPORT_TABLE_HEADER_DOCUMENT=Prova
+AUTOMATIC_IMPORT_TABLE_HEADER_WAITING=in attesa
+
+
+ERROR_FIELD_EMPTY="Il campo %s è vuoto!"
+
+#
+# manual import errors
+#
+MANUAL_IMPORT_ERROR_SUPPLIER="Errore, non è possibile creare o trovare questo fornitore. Suggerimento: fare clic qui per creare il fornitore con il nome esatto: %s, quindi tornare qui e fare nuovamente clic su importa fattura"
+ScanInvoicesNeedPerms="Questo modulo richiede ampi diritti di accesso per funzionare (leggere terzi, creare terzi, diritti di accesso estesi a terzi, leggere fornitori, leggere fatture di fornitori, creare fatture di fornitori, leggere prodotti e servizi ...). E l'utente non sembra avere tutti questi diritti!"
+DateOcrSend="Data di presentazione dell'OCR"
+DateOcrReturn="Data della risposta dell'OCR"
+
+OcrServiceUnavailableStopChain=Il server OCR non è disponibile. L'importazione in serie è stata interrotta. Riprova tra qualche minuto.

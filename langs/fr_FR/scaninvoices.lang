@@ -1,0 +1,280 @@
+# Copyright (C) 2021 Éric Seigne <eric.seigne@cap-rel.fr>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Générique
+#
+
+# Module label 'ModuleScanInvoicesName'
+ModuleScanInvoicesName=ScanInvoices
+# Module description 'ModuleScanInvoicesDesc'
+ModuleScanInvoicesDesc=Vous pouvez téléverser des documents PDF tels que des factures de fournisseurs et créer automatiquement la facture et/ou le fournisseur sans avoir à saisir de données. Le module utilise à la fois les informations FactorX (si disponibles) ou l'OCR pour analyser votre PDF téléversé.
+ScanInvoicesArea=Espace d'import automatique de factures (module ScanInvoices)
+ScanInvoicesHelp=%sDocumentation%s
+#
+# Page d'administration 1
+#
+ScanInvoicesSetup=Configuration du module ScanInvoices
+ScanInvoicesSettings=Réglages
+ScanInvoicesSetupPage=Page de configuration du module ScanInvoices
+SCANINVOICES_URI=Adresse de votre serveur d'ocr (https://ocr.cap-rel.fr)
+SCANINVOICES_URITooltip=Entrez ici l'adresse de votre serveur d'OCR. Note : le serveur ocr.cap-rel.fr vous offre l'analyse de 5 documents chaque mois.
+SCANINVOICES_EMAIL=Adresse mail
+SCANINVOICES_EMAILTooltip=Adresse mail de votre compte sur le serveur d'ocr
+SCANINVOICES_PASS_API=Mot de passe du webservice (mini 6 caractères)
+SCANINVOICES_PASS_APITooltip=Si vous avez déjà un compte, mettez le mot de passe correspondant à votre adresse email ci-dessus. Si vous n'avez pas de compte il sera créé et ce mot de passe lui sera affecté.
+SCANINVOICES_PASS_APITooltipResetPass=Cliquez ici pour réinitialiser votre mot de passe
+SCANINVOICES_KEY_API=Clé d'API (automatique, laissez de champ vide au début)
+SCANINVOICES_KEY_APITooltip=Sera automatiquement complétée lors du clic sur le bouton activer le compte
+SCANINVOICES_DEFAULT_PRODUCT=Produit utilisé par default pour la création de facture
+SCANINVOICES_DEFAULT_PRODUCTTooltip=Utilisé si aucun produits defini sur la fiche fournisseur (Fiche Tiers Onglet Scaninvoices)
+SCANINVOICES_DEFAULT_LIVRAISON=Produit utilisé pour les frais de livraison
+SCANINVOICES_DEFAULT_LIVRAISONTooltip=Lorsque l'extraction des frais de transport ou de livraison est possible vous pouvez associer un produit/service
+SCANINVOICES_ADD_CATEG = Associer les nouveaux produits à la catégorie suivante
+SCANINVOICES_ADD_CATEGTooltip = Si vous voulez vous pouvez automatiquement associer ce tag/catégorie à tout nouvel article créé par ScanInvoices. Ça sera alors plus facile de les retrouver / filtrer.
+
+CheckConnectToScanInvoicesMakeAPIKey=Générer la clé d'API
+CheckConnectToScanInvoices=Vérifier la connexion
+CheckConnectError=Erreur de vérification de la connexion
+CheckConnectOK=Connexion avec le serveur établie
+dol_object_ref=Référence de l'objet Dolibarr
+fourn_invoice_ref=Référence de la facture Fournisseur
+SCANINVOICES_FILE_NAME=Référence à utiliser comme nom de pièce jointe
+SCANINVOICES_FILE_NAMETooltip=Si vide, le nom du fichier PDF d'origine sera utilisé
+SCANINVOICES_FILE_NAME_PRE=Préfixe à ajouter au nom du fichier
+SCANINVOICES_FILE_NAME_PRETooltip=Le préfixe sera ajouté au début du nom du fichier joint à la facture fournisseur.
+SCANINVOICES_EMAIL_USED_RESETPASS=Un compte utilisateur avec cette adresse email (%s) existe déjà sur le serveur %s mais avec un autre mot de passe ! Veuillez cliquer sur le bouton ci-dessous pour lancer la procédure de réinitialisation du mot de passe.
+CreateAccountError=Impossible d'activer le compte
+CreateAccountOk=Activation du compte faite
+SCANINVOICES_IMPORT_CREATE_PRODUCT=Création d'un produit dans la base de données de dolibarr
+SCANINVOICES_IMPORT_CREATE_PRODUCTTooltip=Lors de l'import des lignes automatique des factures il est possible de créer un produit dolibarr automatiquement
+SCANINVOICES_IMPORT_OVERRIDE_LABEL_PRODUCT=Mise à jour du label du produit à l'import
+SCANINVOICES_IMPORT_OVERRIDE_LABEL_PRODUCTTooltip=Cette option permet de mettre à jour le libellé du produit lors de l'import
+SCANINVOICES_IMPORT_SHARE_PORT = Port à utiliser pour se connecter sur le serveur
+SCANINVOICES_IMPORT_SHARE_PORTTooltip = Entrez le port de connexion vers le serveur de stockage
+
+#
+# Page d'administration 2
+#
+ScanInvoicesSetupPageGED=Page de configuration avancée GED et DAV pour ScanInvoices.
+SCANINVOICES_GED_ACTIVATE=Interfacer ScanInvoices avec la GED
+SCANINVOICES_GED_ACTIVATETooltip=Nécessite que le module GED soit activé
+SCANINVOICES_GED_CREATEPATH=Création de l'aborescence ScanInvoices dans la GED
+SCANINVOICES_GED_CREATEPATHTooltip=Créé une arborescence dans la GED pour pouvoir importer les documents que vous y déposerez
+SCANINVOICES_GED_DELETEPATH=Supprimer l'aborescence ScanInvoices de la GED
+SCANINVOICES_GED_DELETEPATHTooltip=Supprime l'arborescence ScanInvoices de la GED
+
+#
+# Page À propos
+#
+About=À propos
+ScanInvoicesAbout=À propos de ScanInvoices
+ScanInvoicesAboutPage=Page à propos de ScanInvoices
+ScanInvoicesNeedPerms=Ce module nécessite des droits d'accès larges pour fonctionner (lire les tiers, créer des tiers, droits étendus d'accès aux tiers, lire les fournisseurs, lire les factures fournisseur, créer des facture fournisseur, lire les produits et services …). Et à priori cet utilisateur ne dispose pas de tous ces droits !
+
+#
+# Box d'exemple
+#
+MyWidget=Mon widget
+MyWidgetDescription=Description de mon widget
+ScanInvoicesFromSupplierOrder=Importer la facture fournisseur automatiquement avec ScanInvoice et la lier à cette commande
+ModuleScanInvoicesNameManual=Import manuel
+ModuleScanInvoicesImportAuto=Import automatique
+ModuleScanInvoicesImportListing=Imports
+LineLabelForNewInvoicesIfNotdefine=Regardez le détail dans les pièces jointes
+LineLabelForNewInvoicesWithMultiVAT=Globalisation avec taux de TVA a %s
+LineLabelForNewInvoicesWithEXO=Globalisation EXO TVA
+LineLabelForNewInvoicesWithECOPART=Globalisation Eco Part
+ERROR_MESSAGE_ANALYSE1=Erreur d'analyse du document (code #%s)
+ERROR_MESSAGE_ANALYSE2=Basculez sur %sl'assistant d'import semi-automatique%s et réimportez votre document…
+ERROR_MESSAGE_CREATE_INVOICE=Erreur de création %s du %s, code d'erreur : %s
+SUCCESS_MESSAGE_CREATE_INVOICE=Facture %s du %s importée : %s
+ERROR_MESSAGE_INVOICE_DUPLICATE=Erreur (%s du %s), cette facture semble déjà avoir été importée. Code d'erreur : %s
+ERROR_FIELD_EMPTY=Le champ %s est vide !
+ERROR_FILE_DOES_NOT_EXISTS=Le fichier %s n'existe plus sur votre serveur Dolibarr, veuillez le ré-importer.
+
+#
+# message par defaut pour la connexion au serveur
+#
+DEFAULT_OCR_WEBSERVICE_MSG1=Le serveur n'est pas accessible ou vous n'avez encore pas encore de compte pour accéder aux services d'analyse et d'extraction de données !
+DEFAULT_OCR_WEBSERVICE_MSG2=Cliquez sur ce lien pour vérifier la connexion ou commander votre abonnement
+DEFAULT_OCR_WEBSERVICE_MSG3=L'adresse IP publique de votre serveur est %s
+DEFAULT_OCR_WEBSERVICE_PROTOCOL1=La version de votre plugin n'est pas en mesure de communiquer avec le serveur (erreur de protocole), veuillez mettre à jour votre plugin.
+DEFAULT_OCR_WEBSERVICE_PROTOCOL2=Cliquez ici pour télécharger la dernière version du plugin ScanInvoice
+OCR_SERVER_UPGRADE_IN_PROGRESS=Mise à jour du serveur en cours
+OCR_SERVER_UPGRADE_IN_PROGRESS_MESSAGE=Votre serveur d'OCR est en cours de mise à jour, merci de ne pas importer de document pour l'instant et de revenir dans un petit moment ...
+#
+# manual import Step1
+#
+MANUAL_IMPORT_STEP1=Import manuel - Assistant étape 1
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER=Choisissez le fournisseur
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT1=Si le fournisseur de cette facture existe déjà dans votre dolibarr alors veuillez le sélectionner dans la liste ci-dessous.
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2=S'il n'existe pas vous avez deux possibilités :
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2a=Soit vous le créez manuellement en cliquant sur le bouton + à droite de la liste
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2b=Soit vous ne choisissez rien dans le menu déroulant et si son numéro de TVA est présent sur la facture vous laissez faire le pilote automatique qui fera le boulot à votre place (ne marche réellement bien que pour les numéros de TVA français, suisses ou belges)
+MANUAL_IMPORT_STEP1_LEGEND=Note : La création automatique de fournisseurs ne fonctionne que si le numéro de TVA indiqué sur la facture est un numéro français, suisse ou belge…
+Next=Suivant
+
+#
+# manual import Step2
+#
+MANUAL_IMPORT_STEP2_OPEN_FILE=Fichier…
+MANUAL_IMPORT_STEP2_TAKE_PICTURE=Photo...
+MANUAL_IMPORT_STEP2_SUPPLIER=Fournisseur :
+MANUAL_IMPORT_STEP2_VAT_NUMBER=Numéro de TVA :
+MANUAL_IMPORT_STEP2_DATE=Date :
+MANUAL_IMPORT_STEP2_INVOICE_NUMBER=N° de facture :
+MANUAL_IMPORT_STEP2_AMOUNT_UNTAXED=Total HT :
+MANUAL_IMPORT_STEP2_AMOUNT=Total TTC :
+MANUAL_IMPORT_STEP2_START_OCR=Lancer l'OCR
+MANUAL_IMPORT_STEP2_START_IMPORT_INTO_DOLIBARR=Importer dans dolibarr
+MANUAL_IMPORT_STEP2_HELP=Aide
+MANUAL_IMPORT_STEP2_DOCUMENT_LANG=Langue du document :
+MANUAL_IMPORT_STEP2_DOCUMENT_PRODUCT=Produit/Service à utiliser
+
+#
+# manual import Step2 - Help assistant
+#
+MANUAL_IMPORT_STEP2_HELP_DONE=Terminé
+MANUAL_IMPORT_STEP2_HELP_CLOSE=Fermer
+MANUAL_IMPORT_STEP2_HELP_NEXT=Suivant
+MANUAL_IMPORT_STEP2_HELP_PREV=Précédent
+MANUAL_IMPORT_STEP2_HELP_1_TITLE=1. Choix du fichier
+MANUAL_IMPORT_STEP2_HELP_1_TXT=Commencez par importer votre fchier de facture au format PDF…<br />Allez, cliquez sur le bouton et choisissez votre fichier PDF :-)
+MANUAL_IMPORT_STEP2_HELP_2_TITLE=2. Identifiez les zones à analyser
+MANUAL_IMPORT_STEP2_HELP_2_TXT=Déplacez les zones sur l'image de la facture pour indiquer quelles sont les zones à analyser.<br /><small>Si jamais vous aviez déjà définis des zones pour ce fournisseur sur une précédente facture le système les aura pré-positionnées, il vous restera de vérifier qu'elles sont bien placées…</small>
+MANUAL_IMPORT_STEP2_HELP_3_TITLE=3. Lancez l'OCR
+MANUAL_IMPORT_STEP2_HELP_3_TXT=Cliquez sur ce bouton pour lancer l'analyse de l'image et l'extraction des données <br /><small>attention à bien avoir chargé un pdf AVANT et à avoir positionné les zones d'analyse</small>
+MANUAL_IMPORT_STEP2_HELP_4_TITLE=4. Vérifiez le résultat
+MANUAL_IMPORT_STEP2_HELP_4_TXT=Contôlez les données importées et ajustez éventuellement les zones d'analyse puis re-cliquez sur le bouton 'OCR' le cas échéant
+MANUAL_IMPORT_STEP2_HELP_5_TITLE=5. Importez la facture
+MANUAL_IMPORT_STEP2_HELP_5_TXT=Après avoir validé les différentes valeurs cliquez sur ce bouton pour importer la facture fournisseur dans dolibarr
+
+
+#
+# manual import errors
+#
+MANUAL_IMPORT_ERROR_SUPPLIER=Ce fournisseur n'existe pas dans Dolibarr. Astuce : %scliquez sur ce lien%s pour créer manuellement le fournisseur avec EXACTEMENT ce nom : %s puis revenez sur cette fenêtre et cliquez à nouveau sur le bouton importer
+MANUAL_IMPORT_ERROR_=
+MANUAL_IMPORT_ERROR_=
+MANUAL_IMPORT_ERROR_=
+MANUAL_IMPORT_ERROR_=
+MANUAL_IMPORT_ERROR_=
+
+#
+# Automatic import
+#
+AUTOMATIC=Détection automatique
+AUTOMATIC_IMPORT_DRAG_FILE_HERE=Glissez et déposez ici la liste des fichiers à importer <br /><small>(ou cliquez pour choisir un fichier), Taille max 8Mo</small>
+AUTOMATIC_IMPORT_TABLE_HEADER_NUMBER=Num.
+AUTOMATIC_IMPORT_TABLE_HEADER_FILE=Fichier
+AUTOMATIC_IMPORT_TABLE_HEADER_SUPPLIER=Fournisseur
+AUTOMATIC_IMPORT_TABLE_HEADER_INVOICE=Facture
+AUTOMATIC_IMPORT_TABLE_HEADER_DOCUMENT=Justificatif
+AUTOMATIC_IMPORT_TABLE_HEADER_WAITING=en attente
+AUTOMATIC_IMPORT_LATER_DRAG_FILE_HERE=Glissez et déposez ici la liste des fichiers à importer <b>plus tard</b> <br /><small>(en heure creuses, à priori la nuit prochaine)</small>
+scaninvoicesPdf2jpegError=Erreur de conversion PDF vers JPEG
+scaninvoicesApiGetInvoicesZonesForSupplier=Récupération impossible des données du serveur d'OCR
+runocrError=Erreur de lancement de l'OCR
+ScanInvoices_background_import_service=ScanInvoices service d'import automatique
+SCANINVOICES_BACKGROUND_SERVER_DETAILS=Cette procédure importe automatiquement les documents envoyés dans la file "plus tard" ou qui sont stockés sur votre dossier partagé (voir configuration du module, onglet "Import automatique")
+Waiting=En attente
+AnalyzeNow=Analyse automatique
+ManualImport=Import manuel
+ImportAnInvoice=Importer une facture
+
+# Page d'administration 3
+Import_share=Partage (import distant)
+ScanInvoicesSetupImportShare=Configuration de l'import automatique depuis un dossier partagé
+SCANINVOICES_IMPORT_SHARE_ENABLE=Import de factures depuis un partage réseau
+SCANINVOICES_IMPORT_SHARE_ENABLETooltip=Activer l'import de factures depuis un dossier partagé sur un serveur (nextcloud)
+SCANINVOICES_IMPORT_SHARE_URI=Adresse du partage réseau
+SCANINVOICES_IMPORT_SHARE_URITooltip=Exemple https://cloud.cap-rel.fr/index.php/s/qo3kEDgCtP9Nwrb
+SCANINVOICES_IMPORT_SHARE_LOGIN=Identifiant
+SCANINVOICES_IMPORT_SHARE_LOGINTooltip=Si votre partage nécessite une authentification
+SCANINVOICES_IMPORT_SHARE_PASS=Mot de passe
+SCANINVOICES_IMPORT_SHARE_PASSTooltip=Si votre partage nécessite une authentification
+SCANINVOICES_IMPORT_SHARE_TYPE=Type de partage
+SCANINVOICES_IMPORT_SHARE_TYPETooltip=Indiquez ici le type de partage (nextcloud pour l'instant)
+SCANINVOICES_IMPORT_SHARE_MAILREPORT=Adresse email
+SCANINVOICES_IMPORT_SHARE_MAILREPORTTooltip=A quelle adresse mail faut-il envoyer les comptes-rendus d'imports ?
+
+# Page d'admin 4
+Import_lines=Import des lignes
+SCANINVOICES_IMPORT_CREATE_PRODUCT_TYPE = Choix Produits ou Services comme type d'article créé par défaut ?
+SCANINVOICES_IMPORT_CREATE_PRODUCT_TYPETooltip = La création d'un article automatique doit être produit ou service ...
+
+MailRepporting=Compte rendu d'import automatique
+IMPORT_FILES_FROM_NETWORK_SHARE_MAIL=Import des fichiers depuis le dossier partagé
+No new file on network share=Aucun nouveau fichier n'a été détecté dans le dossier partagé
+DAV_ERROR_DOUBLE_CHECK_DOCUMENTATION=Vérifiez bien la configuration de votre serveur Nextcloud -> https://doc.cap-rel.fr/projet_scaninvoices/stockage_dans_nextcloud
+SuppliersScanInvoiceModel=Modèle spécial qui extrait la 1ere page de la facture fournisseur et ajoute en surimpression le numéro de pièce comptable dolibarr
+scaninvoicesApiRunInvoiceAnalyzeError=Erreur d'échange de données avec le serveur %s
+OcrServiceUnavailableStopChain=Le serveur OCR est indisponible, l'import en chaîne a été interrompu. Réessayez dans quelques minutes.
+supplier_invoice_ref=Référence de la facture fournisseur
+DateOcrSend=Date d'envoi à l'OCR
+DateOcrReturn=Date de réponse de l'OCR
+
+DolibarrSetupRulesForCompanies=Attention, la configuration du module Tiers de dolibarr risque de provoquer des problèmes d'imports
+Settings=Paramètres
+Filestoimports=Fichiers à importer
+Filetoimport=Fichier à importer
+ErrorScanInvoiceModuleVersionDatabase = La version de votre base de données n'est pas cohérente avec la version du module ScanInvoices, pensez à désactiver et réactiver le module après l'avoir mis à jour ...
+ScanInvoicesSetupPageLINES = Configuration de l'import des lignes de factures
+SCANINVOICES_DISABLE_IMPORT_LINES = Désactiver l'import automatique des lignes de factures
+SCANINVOICES_DISABLE_IMPORT_LINESTooltip = Par défaut ScanInvoices essaye d'importer les factures détaillées (avec toutes les lignes) ... si vous activez cette option vous débrayez cette fonctionnalité pour n'avoir qu'un import global de la facture (total + 1 article par défaut associé)
+
+BlacklistError = L'adresse IP de votre serveur semble être dans notre liste noire (ça arrive souvent si vous êtes sur un serveur mutualisé ou l'adresse IP "de sortie" de votre dolibarr est utilisée par d'autres personnes). Cliquez sur le <a target="_blank" href="https://bl.cap-rel.fr/check.php?data=%s">lien suivant</a> pour faire une demande de nettoyage de votre adresse IP.
+BlacklistErrorTitle = Erreur de filtrage !
+BlacklistErrorFull = Votre serveur semble être complètement blacklisté ... aucun des serveurs CAP-REL n'est joignable, y compris le serveur sur lequel nous n'avons aucun filtrage ! Vérifiez que votre serveur peut se connecter à des ressources distantes et si besoin demandez de l'aide auprès de CAP-REL.
+PleaseAddItOnThirdpartCard = Absente de la fiche du tiers
+
+runocrInfoThereIsNoNewZone = Aucune nouvelle zone d'extraction de données n'a été spécifiée
+ScanInvoicesAutoImportSupplier = Si vous voulez vous pouvez choisir un fournisseur à qui vous voulez affecter l'import
+SCANINVOICES_DISABLE_WARNING = Désactiver l'affichage des messages d'alertes
+SCANINVOICES_DISABLE_WARNINGTooltip = À utiliser si vous ne voulez plus voir les messages d'alertes (mais en ce cas quand ça ne marchera pas vous n'aurez pas les détails)
+
+SCANINVOICES_FORCE_SUPPLIER_SETTINGS_FROM_DOLIBARR = Forcer la date de règlement due, moyen et paiement et compte avec la configuration de votre fiche de tiers
+SCANINVOICES_FORCE_SUPPLIER_SETTINGS_FROM_DOLIBARRSTooltip = Si vous cochez cette case les conditions de règlement fournisseur de votre dolibarr seront prioritaires sur les données présentes sur la facture importée. Ainsi si votre facture indique date de facturation le 2 aout et "payée le 2 le aout" mais que votre fiche fournisseur dolibarr indique "paiement à 10 jours" la date de paiement sera alors le 12 aout. Il en sera de même pour le moyen de paiement et le compte à utiliser.
+
+#
+# Page À propos - infos module et liens
+#
+OnlineDocumentation=Documentation en ligne
+AboutModuleInfo=Informations sur le module
+AboutUsefulLinks=Liens utiles
+AboutSupport=Support
+AboutSAV=Support
+AboutForum=Forum
+AboutContact=Contact
+DolibarrMinVersion=Version minimale de Dolibarr
+PHPMinVersion=Version minimale de PHP
+ScanInvoicesSourceCode=Code source
+
+#
+# Page À propos - feedback et donation
+#
+ScanInvoicesDoYouLikeModule=Vous aimez ce module ?
+ScanInvoicesFeedbackIntro=Vos retours aident à améliorer nos modules. Partagez votre expérience et aidez d'autres utilisateurs à découvrir ce module !
+ScanInvoicesYourRating=Votre note
+ScanInvoicesYourFeedback=Votre avis
+ScanInvoicesYourEmail=Votre email
+ScanInvoicesFeedbackPlaceholder=Dites-nous ce que vous aimez, ce qui pourrait être amélioré...
+ScanInvoicesSendFeedback=Envoyer mon avis
+ScanInvoicesFeedbackSent=Merci pour votre retour !
+ScanInvoicesFeedbackSendError=Erreur lors de l'envoi du retour
+ScanInvoicesBuyMeACoffee=Offrez-nous un café
+ScanInvoicesDonationText=Ce module nous a demandé du temps de développement et de conception. Si vous le trouvez utile et souhaitez soutenir son développement, pensez à nous offrir un café (ou un peu plus). Chaque contribution aide à maintenir le projet en vie et nous motive à ajouter de nouvelles fonctionnalités !
+ScanInvoicesOfferCoffee=Offrir un café ... ou un peu plus

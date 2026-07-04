@@ -1,0 +1,154 @@
+# Copyright (C) 2021 Éric Seigne <eric.seigne@cap-rel.fr>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Générique
+#
+
+# Module label 'ModuleScanInvoicesName'
+ModuleScanInvoicesName=ScanInvoices
+# Module description 'ModuleScanInvoicesDesc'
+ModuleScanInvoicesDesc=Sie können PDF-Dokumente wie Lieferantenrechnungen hochladen und die Rechnung und/oder den Lieferanten automatisch erstellen, ohne Daten eingeben zu müssen. Das Modul verwendet sowohl FactorX-Informationen (falls verfügbar) als auch OCR, um Ihr hochgeladenes PDF zu analysieren.
+ScanInvoicesArea=Automatischer Rechnungsimportbereich (Modul ScanInvoices)
+ScanInvoicesNeedPerms=Dieses Modul erfordert umfangreiche Zugriffsrechte für die Arbeit (Lesen von Dritten, Erstellen von Dritten, erweiterten Zugriffsrechte an Dritte, Lieferanten lesen, Lieferantenrechnungen lesen, Lieferantenrechnung erstellen, Produkte und Dienstleistungen lesen …) Und bei einem Priori hat dieser Benutzer nicht all diese Rechte!
+
+
+#
+# Page d'administration
+#
+ScanInvoicesSetup=Konfigurieren des ScanInvoices-Moduls
+Settings=Einstellungen
+ScanInvoicesSetupPage=Konfigurationsseite des ScanInvoices-Moduls
+SCANINVOICES_URI=Adresse Ihres OCR-Servers (https://ocr.cap-rel.fr)
+SCANINVOICES_URITooltip=Geben Sie hier die Adresse Ihres OCR-Servers ein.
+SCANINVOICES_EMAIL=Mail Adresse
+SCANINVOICES_EMAILTooltip=E-Mail-Adresse Ihres Kontos auf dem OCR-Server. Hinweis: Der Server ocr.cap-rel.fr bietet Ihnen jeden Monat die Analyse von 5 Dokumenten an
+SCANINVOICES_PASS_API=Webservice-Passwort (mindestens 6 Zeichen)
+SCANINVOICES_PASS_APITooltip=Wenn Sie bereits ein Konto haben, geben Sie oben das Passwort ein, das Ihrer E-Mail-Adresse entspricht. Wenn Sie noch kein Konto haben, wird es erstellt und dieses Passwort wird ihm zugewiesen.
+SCANINVOICES_PASS_APITooltipResetPass=Klicken Sie hier, um Ihr Passwort zurückzusetzen
+SCANINVOICES_KEY_API=API Key (automatisch, beim Start leer lassen)
+SCANINVOICES_KEY_APITooltip=Wird automatisch ausgefüllt, wenn Sie auf die Schaltfläche 'Schlüssel generieren' klicken
+CheckConnectToScanInvoicesMakeAPIKey=API-Schlüssel generieren
+CheckConnectToScanInvoices=Verbindung prüfen
+SCANINVOICES_DEFAULT_PRODUCT=Produkt, das standardmäßig für die Rechnungserstellung verwendet wird
+SCANINVOICES_DEFAULT_PRODUCTTooltip=Wird verwendet, wenn keine Produkte in der Lieferantendatei definiert sind (Registerkarte Rechnungen scannen)
+CheckConnectError=Verbindungsüberprüfungsfehler
+CheckConnectOK=Verbindung zum Server hergestellt
+dol_object_ref=Dolibarr-Objektreferenz
+fourn_invoice_ref=Rechnungsreferenz des Lieferanten
+SCANINVOICES_FILE_NAME=Referenz zur Verwendung als Anhangsname
+SCANINVOICES_FILE_NAMETooltip=Wenn null, wird der Name der ursprünglichen PDF-Datei verwendet
+SCANINVOICES_FILE_NAME_PRE=Präfix, das dem Dateinamen hinzugefügt werden soll
+SCANINVOICES_FILE_NAME_PRETooltip=Das Präfix wird am Anfang des Namens der Datei hinzugefügt, die der Lieferantenrechnung beigefügt ist.
+SCANINVOICES_EMAIL_USED_RESETPASS=Ein Benutzerkonto mit dieser E-Mail-Adresse (%s) existiert bereits auf dem Server %s, aber mit einem anderen Passwort! Bitte klicken Sie auf die Schaltfläche unten, um den Vorgang zum Zurücksetzen des Passworts zu starten.
+
+
+#
+# Page À propos 
+#
+About=In Bezug auf
+ScanInvoicesAbout=Über ScanInvoices
+ScanInvoicesAboutPage=Seite über ScanInvoices
+
+#
+# Box d'exemple
+#
+MyWidget=Mein Widget
+MyWidgetDescription=Beschreibung meines Widgets
+ModuleScanInvoicesNameManual=Manueller Import
+ModuleScanInvoicesImportAuto=Automatischer Import
+ScanInvoicesFromSupplierOrder=Importieren Sie die Lieferantenrechnung automatisch mit ScanInvoice und verknüpfen Sie sie mit dieser Bestellung
+LineLabelForNewInvoicesIfNotdefine=Sehen Sie sich die Details in den Anhängen an
+ERROR_MESSAGE_ANALYSE1=Fehler beim Analysieren des Dokuments (Code #%s)
+ERROR_MESSAGE_ANALYSE2=Wechseln Sie zu %sdem halbmanuellen Importassistenten%s und importieren Sie Ihr Dokument erneut…
+ERROR_MESSAGE_CREATE_INVOICE=Fehler beim Erstellen von %s von %s, Fehlercode: %s
+SUCCESS_MESSAGE_CREATE_INVOICE=Rechnung %s von %s importiert: %s
+ERROR_MESSAGE_INVOICE_DUPLICATE=Fehler (%s von %s), diese Rechnung scheint bereits importiert worden zu sein. Fehlercode: %s
+
+# 
+# message par defaut pour la connexion au serveur
+#
+DEFAULT_OCR_WEBSERVICE_MSG1=Der Server ist nicht erreichbar oder Sie haben noch kein Konto, um auf die Analyse- und Datenextraktionsdienste zuzugreifen!
+DEFAULT_OCR_WEBSERVICE_MSG2=Klicken Sie auf diesen Link, um die Verbindung zu prüfen oder Ihr Abonnement zu bestellen
+
+#
+# manual import Step1
+#
+MANUAL_IMPORT_STEP1=Manueller Import – Assistent für Schritt 1
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER=Wählen Sie den Lieferanten
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT1=Wenn der Lieferant dieser Rechnung bereits in Ihrem dolibarr vorhanden ist, wählen Sie ihn bitte aus der Liste unten aus.
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2=Wenn es nicht vorhanden ist, haben Sie zwei Möglichkeiten:
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2a=Entweder erstellen Sie es manuell, indem Sie auf die Schaltfläche "+" rechts neben der Liste klicken
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2b=Entweder Sie wählen im Drop-down-Menü nichts aus und wenn die Umsatzsteuer-Identifikationsnummer auf der Rechnung vorhanden ist, lassen Sie den automatischen Piloten die Arbeit für Sie erledigen (funktioniert nur wirklich gut für französische Umsatzsteuer-Identifikationsnummern)
+MANUAL_IMPORT_STEP1_LEGEND=Hinweis: Die automatische Erstellung von Lieferanten funktioniert nur, wenn die auf der Rechnung angegebene Umsatzsteuer-Identifikationsnummer eine französische Nummer ist…
+Next=Folgend
+
+#
+# manual import Step2
+#
+MANUAL_IMPORT_STEP2_OPEN_FILE=Datei öffnen…
+MANUAL_IMPORT_STEP2_SUPPLIER=Anbieter:
+MANUAL_IMPORT_STEP2_VAT_NUMBER=Umsatzsteuer-Identifikationsnummer:
+MANUAL_IMPORT_STEP2_DATE=Datiert:
+MANUAL_IMPORT_STEP2_INVOICE_NUMBER=Rechnung:
+MANUAL_IMPORT_STEP2_AMOUNT_UNTAXED=Gesamt-HT:
+MANUAL_IMPORT_STEP2_AMOUNT=Gesamtpreis:
+MANUAL_IMPORT_STEP2_START_OCR=OCR starten
+MANUAL_IMPORT_STEP2_START_IMPORT_INTO_DOLIBARR=Importieren Sie in dolibar
+MANUAL_IMPORT_STEP2_HELP=Hilfe
+
+#
+# manual import Step2 - Help assistant
+#
+MANUAL_IMPORT_STEP2_HELP_DONE=Beendet
+MANUAL_IMPORT_STEP2_HELP_CLOSE=Nah dran
+MANUAL_IMPORT_STEP2_HELP_NEXT=Folgend
+MANUAL_IMPORT_STEP2_HELP_PREV=Vorherige
+MANUAL_IMPORT_STEP2_HELP_1_TITLE=1. Dateiauswahl
+MANUAL_IMPORT_STEP2_HELP_1_TXT=Importieren Sie zunächst Ihre Rechnungsdatei im PDF-Format…<br />Los, klicken Sie auf die Schaltfläche und wählen Sie Ihre PDF-Datei aus :-)
+MANUAL_IMPORT_STEP2_HELP_2_TITLE=2. Identifizieren Sie die zu analysierenden Bereiche
+MANUAL_IMPORT_STEP2_HELP_2_TXT=Verschieben Sie die Bereiche auf dem Bild der Rechnung, um anzugeben, welche Bereiche analysiert werden sollen.<br /><small>Wenn Sie schon einmal Bereiche für diesen Lieferanten auf einer früheren Rechnung definiert hatten, hat das System diese vorab positioniert, wenn Sie möchten müssen überprüfen, ob sie gut platziert sind…</small>
+MANUAL_IMPORT_STEP2_HELP_3_TITLE=3. Führen Sie OCR aus
+MANUAL_IMPORT_STEP2_HELP_3_TXT=Klicken Sie auf diese Schaltfläche, um die Bildanalyse und die Datenextraktion zu starten <br /><small>achten Sie darauf, dass Sie VORHER ein pdf geladen und die Analysezonen positioniert haben</small>
+MANUAL_IMPORT_STEP2_HELP_4_TITLE=4. Überprüfen Sie das Ergebnis
+MANUAL_IMPORT_STEP2_HELP_4_TXT=Überprüfen Sie die importierten Daten und passen Sie ggf. die Analysebereiche an, klicken Sie dann ggf. erneut auf die Schaltfläche „OCR“ des vorherigen Reiters
+MANUAL_IMPORT_STEP2_HELP_5_TITLE=5. Importieren Sie die Rechnung
+MANUAL_IMPORT_STEP2_HELP_5_TXT=Klicken Sie nach der Validierung der verschiedenen Werte auf diese Schaltfläche, um die Lieferantenrechnung in dolibarr zu importieren
+MANUAL_IMPORT_STEP2_DOCUMENT_LANG=Sprache des Dokuments:
+
+#
+# Automatic import
+#
+
+AUTOMATIC_IMPORT_DRAG_FILE_HERE=Ziehen Sie die Liste der zu importierenden Dateien per Drag-and-Drop hierher <br /><small>(oder klicken Sie, um eine Datei auszuwählen)</small>
+AUTOMATIC_IMPORT_TABLE_HEADER_NUMBER=Anz.
+AUTOMATIC_IMPORT_TABLE_HEADER_FILE=Datei
+AUTOMATIC_IMPORT_TABLE_HEADER_SUPPLIER=Anbieter
+AUTOMATIC_IMPORT_TABLE_HEADER_INVOICE=Rechnung
+AUTOMATIC_IMPORT_TABLE_HEADER_DOCUMENT=Nachweisen
+AUTOMATIC_IMPORT_TABLE_HEADER_WAITING=warten
+
+
+
+#
+# manual import errors
+#
+MANUAL_IMPORT_ERROR_SUPPLIER=Fehler, dieser Lieferant kann nicht erstellt oder gefunden werden. Tipp: Bitte klicken Sie hier, um diesen Lieferanten mit EXAKTEM Namen zu erstellen: %s und kommen Sie dann hierher zurück und klicken Sie erneut auf Rechnung importieren
+DateOcrSend=Datum der OCR-Übermittlung
+DateOcrReturn=Datum OCR-Antwort
+ERROR_FIELD_EMPTY=Das Feld %s ist leer!
+supplier_invoice_ref=Referenz der Lieferantenrechnung
+
+OcrServiceUnavailableStopChain=Der OCR-Server ist nicht verfügbar. Der Kettenimport wurde unterbrochen. Bitte versuchen Sie es in einigen Minuten erneut.

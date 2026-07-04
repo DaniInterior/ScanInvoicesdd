@@ -1,0 +1,41 @@
+{
+    "name": "cap-rel/scaninvoices",
+    "description": "ScanInvoices - Module Dolibarr pour import automatique de factures",
+    "type": "dolibarr-module",
+    "license": "AGPL-3.0-or-later",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "cap-rel/dolibarr-integration-sqlite": "18.0.x-dev"
+    },
+    "autoload": {
+        "classmap": [
+            "class/"
+        ],
+        "psr-4": {
+            "ScanInvoices\\Api\\": "smartmaker-api/"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "test/phpunit/dolibarr-autoload-init.php"
+        ],
+        "psr-4": {
+            "ScanInvoices\\Tests\\": "test/phpunit/",
+            "ScanInvoices\\Tests\\IntegrationDolibarr\\": "test/phpunit/integration-dolibarr/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite unit",
+        "test:integration": "php -d pcov.enabled=1 -d pcov.directory=. vendor/bin/phpunit -c phpunit-integration-dolibarr.xml",
+        "test:coverage": "php -d pcov.enabled=1 -d pcov.directory=. vendor/bin/phpunit"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

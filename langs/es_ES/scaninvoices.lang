@@ -1,0 +1,156 @@
+# Copyright (C) 2021 Éric Seigne <eric.seigne@cap-rel.fr>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Générique
+#
+
+# Module label 'ModuleScanInvoicesName'
+ModuleScanInvoicesName=ScanInvoices
+# Module description 'ModuleScanInvoicesDesc'
+ModuleScanInvoicesDesc=Puede cargar documentos PDF como facturas de proveedores y crear automáticamente la factura y/o el proveedor sin tener que ingresar ningún dato. El módulo utiliza información de FactorX (si está disponible) u OCR para analizar su PDF cargado.
+ScanInvoicesArea=Área de importación automática de facturas (módulo ScanInvoices)
+ScanInvoicesNeedPerms=Este módulo requiere amplios derechos de acceso para trabajar (leer terceros, crear terceros, derechos de acceso prolongados a terceros, leer proveedores, leer facturas de proveedores, crear facturas de proveedores, leer productos y servicios ...) ¡Y a priori, este usuario no tiene todos estos derechos!
+
+#
+# Page d'administration
+#
+ScanInvoicesSetup=Configuración del módulo ScanInvoices
+Settings=Ajustes
+ScanInvoicesSetupPage=Página de configuración del módulo ScanInvoices
+SCANINVOICES_URI=Dirección de su servidor ocr (https://ocr.cap-rel.fr)
+SCANINVOICES_URITooltip=Ingrese la dirección de su servidor OCR aquí. Nota: el servidor ocr.cap-rel.fr le ofrece el análisis de 5 documentos cada mes.
+SCANINVOICES_EMAIL=Correo electrónico
+SCANINVOICES_EMAILTooltip=Dirección de correo electrónico de su cuenta en el servidor ocr
+SCANINVOICES_PASS_API=Contraseña del servicio web (mínimo 6 caracteres)
+SCANINVOICES_PASS_APITooltip=Si ya tiene una cuenta, ingrese la contraseña correspondiente a su dirección de correo electrónico arriba. Si no tiene una cuenta, se creará y se le asignará esta contraseña.
+SCANINVOICES_PASS_APITooltipResetPass=Haga clic aquí para restablecer la contraseña
+SCANINVOICES_KEY_API=Clave API (automática, dejar en blanco al inicio)
+SCANINVOICES_KEY_APITooltip=Se completará automáticamente al hacer clic en el botón 'generar clave'
+CheckConnectToScanInvoicesMakeAPIKey=Generar clave API
+CheckConnectToScanInvoices=Verifica la conexión
+
+#
+# Page À propos 
+#
+About=A proposito
+ScanInvoicesAbout=Acerca de ScanInvoices
+ScanInvoicesAboutPage=Página sobre ScanInvoices
+
+#
+# Box d'exemple
+#
+MyWidget=Mi widget
+MyWidgetDescription=Descripción de mi widget
+ScanInvoicesFromSupplierOrder=Importe la factura del proveedor automáticamente con ScanInvoice y vincúlela a este pedido
+ModuleScanInvoicesNameManual=Importación manual
+ModuleScanInvoicesImportAuto=Importación automática
+LineLabelForNewInvoicesIfNotdefine=Mira el detalle en los archivos adjuntos
+ERROR_MESSAGE_ANALYSE1=Error al analizar el documento (código #%s)
+ERROR_MESSAGE_ANALYSE2=Cambie a %sel asistente de importación semimanual%s y vuelva a importar su documento…
+ERROR_MESSAGE_CREATE_INVOICE=Error al crear %s de %s, código de error: %s
+SUCCESS_MESSAGE_CREATE_INVOICE=Factura %s de %s importada: %s
+ERROR_MESSAGE_INVOICE_DUPLICATE=Error (%s de %s), parece que esta factura ya se ha importado. Código de error: %s
+SCANINVOICES_DEFAULT_PRODUCT=Producto utilizado por defecto para la creación de facturas
+SCANINVOICES_DEFAULT_PRODUCTTooltip=Se usa si no hay productos definidos en el archivo del proveedor (pestaña Scaninvoices del archivo de terceros)
+CheckConnectToScanInvoicesMakeAPIKey=Generar clave API
+CheckConnectToScanInvoices=Comprobar conexión y activar cuenta
+CheckConnectError=Error de verificación de conexión
+CheckConnectOK=Conexión con el servidor establecida
+dol_object_ref=Referencia del objeto Dolibarr
+proveedor_invoice_ref=Referencia de la factura del proveedor
+SCANINVOICES_FILE_NAME=Referencia para usar como nombre de archivo adjunto
+SCANINVOICES_FILE_NAMETooltip=Si es nulo, se usará el nombre del archivo PDF original
+SCANINVOICES_FILE_NAME_PRE=Prefijo para agregar al nombre del archivo
+SCANINVOICES_FILE_NAME_PRETooltip=El prefijo se agregará al comienzo del nombre del archivo adjunto a la factura del proveedor.
+SCANINVOICES_EMAIL_USED_RESETPASS=¡Ya existe una cuenta de usuario con esta dirección de correo electrónico (%s) en el servidor %s pero con una contraseña diferente! Haga clic en el botón a continuación para iniciar el procedimiento de restablecimiento de contraseña.
+
+# 
+# message par defaut pour la connexion au serveur
+#
+DEFAULT_OCR_WEBSERVICE_MSG1=¡El servidor no es accesible o aún no tiene una cuenta para acceder a los servicios de análisis y extracción de datos!
+DEFAULT_OCR_WEBSERVICE_MSG2=Haga clic en este enlace para comprobar la conexión o pedir su suscripción
+
+#
+# manual import Step1
+#
+MANUAL_IMPORT_STEP1=Importación manual: asistente del paso 1
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER=Elige el proveedor
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT1=Si el proveedor de esta factura ya existe en su dolibarr, selecciónelo de la lista a continuación.
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2=Si no existe, tienes dos opciones:
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2a=O lo crea manualmente haciendo clic en el botón "+" a la derecha de la lista
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2b=O no elige nada en el menú desplegable y si su número de IVA está presente en la factura, deja que el piloto automático haga el trabajo por usted (realmente solo funciona bien para los números de IVA franceses)
+MANUAL_IMPORT_STEP1_LEGEND=Nota: La creación automática de proveedores solo funciona si el número de IVA indicado en la factura es un número francés…
+Next=Próximo
+
+#
+# manual import Step2
+#
+MANUAL_IMPORT_STEP2_OPEN_FILE=Abrir documento…
+MANUAL_IMPORT_STEP2_SUPPLIER=Proveedor:
+MANUAL_IMPORT_STEP2_VAT_NUMBER=Número de TVA:
+MANUAL_IMPORT_STEP2_DATE=Con fecha de:
+MANUAL_IMPORT_STEP2_INVOICE_NUMBER=Factura:
+MANUAL_IMPORT_STEP2_AMOUNT_UNTAXED=HT totales:
+MANUAL_IMPORT_STEP2_AMOUNT=Precio total:
+MANUAL_IMPORT_STEP2_START_OCR=Iniciar OCR
+MANUAL_IMPORT_STEP2_START_IMPORT_INTO_DOLIBARR=Importar a dolibarr
+MANUAL_IMPORT_STEP2_HELP=Ayuda
+
+#
+# manual import Step2 - Help assistant
+#
+MANUAL_IMPORT_STEP2_HELP_DONE=Terminado
+MANUAL_IMPORT_STEP2_HELP_CLOSE=Cerca
+MANUAL_IMPORT_STEP2_HELP_NEXT=Próximo
+MANUAL_IMPORT_STEP2_HELP_PREV=Anterior
+MANUAL_IMPORT_STEP2_HELP_1_TITLE=1. Elección del archivo
+MANUAL_IMPORT_STEP2_HELP_1_TXT=Comience por importar su archivo de factura en formato PDF…<br />Vaya, haga clic en el botón y elija su archivo PDF :-)
+MANUAL_IMPORT_STEP2_HELP_2_TITLE=2. Identificar las áreas a analizar
+MANUAL_IMPORT_STEP2_HELP_2_TXT=Mueva las áreas en la imagen de la factura para indicar qué áreas analizar.<br /><small>Si alguna vez ya había definido áreas para este proveedor en una factura anterior, el sistema las habrá preposicionado, si hay que comprobar que están bien colocados…</small>
+MANUAL_IMPORT_STEP2_HELP_3_TITLE=3. Ejecutar OCR
+MANUAL_IMPORT_STEP2_HELP_3_TXT=Haga clic en este botón para iniciar el análisis de imágenes y la extracción de datos <br /><small>tenga cuidado de haber cargado un pdf ANTES y haber posicionado las zonas de análisis</small>
+MANUAL_IMPORT_STEP2_HELP_4_TITLE=4. Comprueba el resultado
+MANUAL_IMPORT_STEP2_HELP_4_TXT=Verifique los datos importados y ajuste las áreas de análisis si es necesario, luego haga clic nuevamente en el botón 'OCR' de la pestaña anterior si es necesario
+MANUAL_IMPORT_STEP2_HELP_5_TITLE=5. Importar la factura
+MANUAL_IMPORT_STEP2_HELP_5_TXT=Después de validar los diferentes valores, haga clic en este botón para importar la factura del proveedor a dolibarr
+MANUAL_IMPORT_STEP2_DOCUMENT_LANG=Idioma del documento:
+
+#
+# Automatic import
+#
+
+AUTOMATIC_IMPORT_DRAG_FILE_HERE=Arrastre y suelte la lista de archivos para importar aquí <br /><small>(o haga clic para elegir un archivo)</small>
+AUTOMATIC_IMPORT_TABLE_HEADER_NUMBER=número
+AUTOMATIC_IMPORT_TABLE_HEADER_FILE=Archivo
+AUTOMATIC_IMPORT_TABLE_HEADER_SUPPLIER=Proveedor
+AUTOMATIC_IMPORT_TABLE_HEADER_INVOICE=Factura
+AUTOMATIC_IMPORT_TABLE_HEADER_DOCUMENT=Prueba
+AUTOMATIC_IMPORT_TABLE_HEADER_WAITING=a la espera
+
+
+
+#
+# manual import errors
+#
+MANUAL_IMPORT_ERROR_SUPPLIER=Error, no se puede crear o encontrar este proveedor. Consejo: por favor, haga clic aquí para crear ese proveedor con el nombre EXACTO: %s luego volver aquí y haga clic de nuevo en la importación de la factura
+DateOcrSend=Fecha de presentación del OCR
+DateOcrReturn=Fecha de la respuesta de la OCR
+ERROR_FIELD_EMPTY=¡El campo %s está vacío!
+supplier_invoice_ref=Referencia de la factura del proveedor
+Filestoimports=Archivos para importar
+Filetoimport=Archivos para importar
+
+OcrServiceUnavailableStopChain=El servidor OCR no está disponible. La importación encadenada se ha detenido. Por favor, inténtelo de nuevo en unos minutos.

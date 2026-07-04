@@ -1,0 +1,140 @@
+
+
+CheckConnectOK=OK
+MANUAL_IMPORT_STEP1_LEGEND="Opmerking: Het automatisch aanmaken van leveranciers werkt alleen als het btw-nummer dat op de factuur staat een Frans nummer is..."
+Next=Naar
+
+#
+# manual import Step2
+#
+MANUAL_IMPORT_STEP2_OPEN_FILE=Open bestand…
+MANUAL_IMPORT_STEP2_SUPPLIER=Aanbieder:
+MANUAL_IMPORT_STEP2_VAT_NUMBER=BTW-nummer:
+MANUAL_IMPORT_STEP2_DATE=Gedateerd:
+MANUAL_IMPORT_STEP2_HELP=Steun
+#
+# Generic
+#
+
+# Module label 'ModuleScanInvoicesName'
+ModuleScanInvoicesName=Scanfacturen
+# Module description 'ModuleScanInvoicesDesc'
+ModuleScanInvoicesDesc=Je kunt PDF-documenten zoals facturen van leveranciers uploaden en de factuur en/of leverancier automatisch laten aanmaken zonder dat je gegevens hoeft in te voeren. De module gebruikt zowel FactorX-informatie (indien gevonden) als OCR om je geüploade PDF te analyseren.
+ScanInvoicesArea=Ruimte om facturen te scannen (module ScanInvoices)
+ScanInvoicesNeedPerms=Deze module vereist brede toegangsrechten om te kunnen werken (derden lezen, derden aanmaken, uitgebreide toegangsrechten tot derden, leveranciers lezen, leveranciersfacturen lezen, leveranciersfactuur aanmaken, producten en diensten lezen ...). En die gebruiker lijkt niet al deze rechten te hebben!
+DateOcrSend=Datum indiening OCR
+DateOcrReturn=Datum antwoord OCR
+Filestoimports=Te importeren bestanden
+Filetoimport=Bestand importeren
+
+#
+# Admin page
+#
+ScanInvoicesSetup=Scanfacturen instellen
+Settings=Instellingen
+ScanInvoicesSetupPage=Instellingenpagina Scanfacturen
+SCANINVOICES_URI=Adres van uw ocr-server (https://ocr.cap-rel.fr)
+SCANINVOICES_URITooltip=Voer hier het adres van je OCR-server in. Opmerking: de ocr.cap-rel.fr server biedt je de analyse van 5 documenten per maand.
+SCANINVOICES_EMAIL=Postadres
+SCANINVOICES_EMAILTooltip=E-mailadres van uw account op de ocr-server
+SCANINVOICES_PASS_API=Wachtwoord webservice (minimaal 6 tekens)
+SCANINVOICES_PASS_APITooltip=Als je al een account hebt, voer dan hierboven het wachtwoord in dat overeenkomt met je e-mailadres. Als je nog geen account hebt, wordt deze aangemaakt en wordt dit wachtwoord eraan toegekend.
+SCANINVOICES_PASS_APITooltipResetPass=Klik hier om uw wachtwoord opnieuw in te stellen
+SCANINVOICES_KEY_API=API-sleutel (automatisch, bij begin leeg laten)
+SCANINVOICES_KEY_APITooltip=Wordt automatisch ingevuld wanneer u op de knop "Sleutel genereren" klikt
+CheckConnectToScanInvoicesMakeAPIKey=API-sleutel genereren
+CheckConnectToScanInvoices=Verbinding controleren
+CheckConnectError=Fout
+
+
+
+#
+# About page
+#
+About=Over
+ScanInvoicesAbout=Over ScanInvoices
+ScanInvoicesAboutPage=Scanfacturen over pagina
+
+#
+# Sample widget
+#
+MyWidget=Mijn widget
+MyWidgetDescription=Mijn widget beschrijving
+ScanInvoicesFromSupplierOrder=De factuur van de leverancier automatisch importeren met ScanInvoice en koppelen aan deze bestelling
+ModuleScanInvoicesNameManual=Handmatig importeren
+ModuleScanInvoicesImportAuto=Automatisch importeren
+LineLabelForNewInvoicesIfNotdefine=Kijk naar de details in de bijlagen
+ERROR_MESSAGE_ANALYSE1=Fout bij het parsen van document (code #%s)
+ERROR_MESSAGE_ANALYSE2=Schakel over naar %de halfautomatische importwizard%s en importeer je document opnieuw…
+ERROR_MESSAGE_CREATE_INVOICE=Fout bij het aanmaken van %s van %s, foutcode: %s
+SUCCESS_MESSAGE_CREATE_INVOICE=Factuur %s van %s geïmporteerd: %s
+ERROR_MESSAGE_INVOICE_DUPLICATE=Fout (%s of %s), deze factuur lijkt al geïmporteerd te zijn. Foutcode: %s
+ERROR_FIELD_EMPTY=Het veld %s is leeg !
+SCANINVOICES_DEFAULT_PRODUCT=Product dat standaard wordt gebruikt om een factuur te maken
+SCANINVOICES_DEFAULT_PRODUCTTooltip=Wordt gebruikt als er geen producten zijn gedefinieerd in het leveranciersbestand (tabblad Scanfacturen derdenbestand)
+dol_object_ref=Dolibarr objectverwijzing
+supplier_invoice_ref=Factuurreferentie leverancier
+SCANINVOICES_FILE_NAME=Verwijzing om te gebruiken als naam van bijlage
+SCANINVOICES_FILE_NAMETooltip=Als deze waarde nul is, wordt de naam van het originele PDF-bestand gebruikt.
+SCANINVOICES_FILE_NAME_PRE=Voorvoegsel om toe te voegen aan bestandsnaam
+SCANINVOICES_FILE_NAME_PRETooltip=Het voorvoegsel wordt toegevoegd aan het begin van de bestandsnaam die aan de leveranciersfactuur is gekoppeld.SCANINVOICES_EMAIL_USED_RESETPASS = Er bestaat al een gebruikersaccount met dit e-mailadres (%s) op server %s, maar met een ander wachtwoord! Klik op de knop hieronder om de procedure voor het resetten van het wachtwoord te starten.
+
+# 
+# message par defaut pour la connexion au serveur
+#
+DEFAULT_OCR_WEBSERVICE_MSG1=De server is niet toegankelijk of u hebt nog geen account voor toegang tot de analyse- en gegevensextractiediensten!
+DEFAULT_OCR_WEBSERVICE_MSG2=Klik op deze link om de verbinding te controleren of uw abonnement te bestellen
+
+#
+# manual import Step1
+#
+MANUAL_IMPORT_STEP1=Handmatig importeren - Stap 1 Wizard
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER=Kies de leverancier
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT1=Als de leverancier van deze factuur al bestaat in je dolibarr, selecteer deze dan uit de onderstaande lijst.
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2=Als het niet bestaat, heb je twee opties:
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2a=Ofwel maak je het handmatig door op de "+" knop rechts van de lijst te klikken
+MANUAL_IMPORT_STEP1_CHOOSE_SUPPLIER_TXT2b=Of je kiest niets in het drop-downmenu en als het BTW-nummer op de factuur staat, laat je de automatische piloot het werk voor je doen (werkt alleen echt goed voor Franse BTW-nummers).
+MANUAL_IMPORT_STEP2_INVOICE_NUMBER=Factuur:
+MANUAL_IMPORT_STEP2_AMOUNT_UNTAXED=Totaal HT:
+MANUAL_IMPORT_STEP2_AMOUNT=Totale prijs:
+MANUAL_IMPORT_STEP2_START_OCR=OCR starten
+MANUAL_IMPORT_STEP2_START_IMPORT_INTO_DOLIBARR=Importeren in dolibarr
+
+#
+# manual import Step2 - Help assistant
+#
+MANUAL_IMPORT_STEP2_HELP_DONE=Beëindigd
+MANUAL_IMPORT_STEP2_HELP_CLOSE=Sluit
+MANUAL_IMPORT_STEP2_HELP_NEXT=Naar
+MANUAL_IMPORT_STEP2_HELP_PREV=Vorige
+MANUAL_IMPORT_STEP2_HELP_1_TITLE=1. Keuze van bestand
+MANUAL_IMPORT_STEP2_HELP_1_TXT=Begin met het importeren van je factuurbestand in PDF-formaat...<br />Go, klik op de knop en kies je PDF-bestand :-)
+MANUAL_IMPORT_STEP2_HELP_2_TITLE=2. De te analyseren gebieden identificeren
+MANUAL_IMPORT_STEP2_HELP_2_TXT=Verplaats de gebieden op de afbeelding van de factuur om aan te geven welke gebieden moeten worden geanalyseerd.<br /><small>Als je ooit al gebieden voor deze leverancier hebt gedefinieerd op een eerdere factuur, heeft het systeem deze vooraf geplaatst, maar moet je controleren of ze goed zijn geplaatst...</small>
+MANUAL_IMPORT_STEP2_HELP_3_TITLE=3. OCR uitvoeren
+MANUAL_IMPORT_STEP2_HELP_3_TXT=Klik op deze knop om de beeldanalyse en gegevensextractie te starten <br /><small>Zorg ervoor dat u VOORAF een pdf hebt geladen en dat u de analysezones hebt gepositioneerd.</small>
+MANUAL_IMPORT_STEP2_HELP_4_TITLE=4. Controleer het resultaat
+MANUAL_IMPORT_STEP2_HELP_4_TXT=Controleer de geïmporteerde gegevens en pas indien nodig de analysegebieden aan, klik dan opnieuw op de knop 'OCR' van het vorige tabblad indien nodig
+MANUAL_IMPORT_STEP2_HELP_5_TITLE=5. De factuur importeren
+MANUAL_IMPORT_STEP2_HELP_5_TXT=Na het valideren van de verschillende waarden klik je op deze knop om de leveranciersfactuur te importeren in dolibarr
+MANUAL_IMPORT_STEP2_DOCUMENT_LANG=Taal van het document:
+
+#
+# manual import errors
+#
+MANUAL_IMPORT_ERROR_SUPPLIER=Fout, kan deze leverancier niet maken of vinden. Tip: klik hier om die leverancier aan te maken met de EXACTE naam: %s kom dan hier terug en klik nogmaals op factuur importeren
+
+
+#
+# Automatic import
+#
+
+AUTOMATIC_IMPORT_DRAG_FILE_HERE=Sleep de lijst met te importeren bestanden hier naartoe <br /><small>(of klik om een bestand te kiezen)</small>
+AUTOMATIC_IMPORT_TABLE_HEADER_NUMBER=Cijfer.
+AUTOMATIC_IMPORT_TABLE_HEADER_FILE=Bestand
+AUTOMATIC_IMPORT_TABLE_HEADER_SUPPLIER=Aanbieder
+AUTOMATIC_IMPORT_TABLE_HEADER_INVOICE=Bill
+AUTOMATIC_IMPORT_TABLE_HEADER_DOCUMENT=Bewijs
+AUTOMATIC_IMPORT_TABLE_HEADER_WAITING=wachtend
+
+OcrServiceUnavailableStopChain=De OCR-server is niet beschikbaar. De ketenimport is gestopt. Probeer het over een paar minuten opnieuw.
